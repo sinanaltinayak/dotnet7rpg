@@ -1,7 +1,6 @@
 using System.Security.Claims;
-using Azure;
 
-namespace dotnet7rpg.Services
+namespace dotnet7rpg.Services.CharacterService
 {
     public class CharacterService : ICharacterService
     {

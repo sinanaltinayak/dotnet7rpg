@@ -1,5 +1,7 @@
 global using dotnet7rpg.Models;
-global using dotnet7rpg.Services;
+global using dotnet7rpg.Services.CharacterService;
+global using dotnet7rpg.Services.WeaponService;
+global using dotnet7rpg.Services.FightService;
 global using dotnet7rpg.Dtos.Character;
 global using dotnet7rpg.Dtos.User;
 global using dotnet7rpg.Dtos.Weapon;
@@ -10,7 +12,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.Filters;
 using Microsoft.OpenApi.Models;
-using dotnet7rpg.Services.WeaponService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -38,6 +39,7 @@ builder.Services.AddSwaggerGen( c => {
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 builder.Services.AddScoped<ICharacterService, CharacterService>();
 builder.Services.AddScoped<IWeaponService, WeaponService>();
+builder.Services.AddScoped<IFightService, FightService>();
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
