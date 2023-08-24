@@ -1,7 +1,10 @@
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace dotnet7rpg.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]/[action]")]
     public class CharacterController : ControllerBase
@@ -11,12 +14,6 @@ namespace dotnet7rpg.Controllers
         {
             _characterService = characterService;
 
-        }
-
-        [HttpGet]
-        public async Task<ActionResult<ServiceResponse<GetCharacterDto>>> Get(int id)
-        {
-            return Ok(await _characterService.GetCharacterById(id));
         }
 
         [HttpGet]
@@ -54,5 +51,12 @@ namespace dotnet7rpg.Controllers
 
             return Ok(response);
         }
+
+        [HttpPost]
+        public async Task<ActionResult<ServiceResponse<GetCharacterDto>>> AddCharacterSkill(AddCharacterSkillDto newCharacterSkill)
+        {
+            return Ok(await _characterService.AddCharacterSkill(newCharacterSkill));
+        }
+
     }
 }
