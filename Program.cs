@@ -61,7 +61,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+// cool-message
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
